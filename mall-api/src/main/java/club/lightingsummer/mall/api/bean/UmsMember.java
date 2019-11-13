@@ -1,4 +1,4 @@
-package club.lightingsummer.mall.user.bean;
+package club.lightingsummer.mall.api.bean;
 
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;

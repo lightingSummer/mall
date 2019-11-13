@@ -1,8 +1,8 @@
 package club.lightingsummer.mall.user.controller;
 
-import club.lightingsummer.mall.user.bean.UmsMember;
-import club.lightingsummer.mall.user.bean.UmsMemberReceiveAddress;
-import club.lightingsummer.mall.user.service.UserService;
+import club.lightingsummer.mall.api.bean.UmsMember;
+import club.lightingsummer.mall.api.bean.UmsMemberReceiveAddress;
+import club.lightingsummer.mall.api.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;

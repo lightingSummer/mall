@@ -1,6 +1,6 @@
 package club.lightingsummer.mall.user.mapper;
 
-import club.lightingsummer.mall.user.bean.UmsMember;
+import club.lightingsummer.mall.api.bean.UmsMember;
 import tk.mybatis.mapper.common.Mapper;
 
 import java.util.List;
@@ -14,7 +14,7 @@ public interface UserMapper extends Mapper<UmsMember> {
     /**
      * description: 获取所有用户
      *
-     * @return java.util.List<club.lightingsummer.mall.user.bean.UmsMember>
+     * @return java.util.List<UmsMember>
      */
     List<UmsMember> selectAllUsers();
 }

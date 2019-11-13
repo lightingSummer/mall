@@ -1,7 +1,7 @@
-package club.lightingsummer.mall.user.service;
+package club.lightingsummer.mall.api.service;
 
-import club.lightingsummer.mall.user.bean.UmsMember;
-import club.lightingsummer.mall.user.bean.UmsMemberReceiveAddress;
+import club.lightingsummer.mall.api.bean.UmsMember;
+import club.lightingsummer.mall.api.bean.UmsMemberReceiveAddress;
 
 import java.util.List;
 
@@ -13,7 +13,7 @@ public interface UserService {
     /**
      * description:
      *
-     * @return java.util.List<club.lightingsummer.mall.user.bean.UmsMember>
+     * @return java.util.List<UmsMember>
      */
     List<UmsMember> getAllUsers();
 
@@ -21,7 +21,7 @@ public interface UserService {
      * description: 根据用户id查询收货地址
      *
      * @param memberId 用户id
-     * @return java.util.List<club.lightingsummer.mall.user.bean.UmsMemberReceiveAddress>
+     * @return java.util.List<UmsMemberReceiveAddress>
      */
     List<UmsMemberReceiveAddress> getReceiveAddressByMemberId(String memberId);
 }

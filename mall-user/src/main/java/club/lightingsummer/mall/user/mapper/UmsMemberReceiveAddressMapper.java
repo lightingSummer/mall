@@ -1,6 +1,6 @@
 package club.lightingsummer.mall.user.mapper;
 
-import club.lightingsummer.mall.user.bean.UmsMemberReceiveAddress;
+import club.lightingsummer.mall.api.bean.UmsMemberReceiveAddress;
 import tk.mybatis.mapper.common.Mapper;
 
 /**
