@@ -3,7 +3,7 @@ package club.lightingsummer.mall.user.controller;
 import club.lightingsummer.mall.api.bean.UmsMember;
 import club.lightingsummer.mall.api.bean.UmsMemberReceiveAddress;
 import club.lightingsummer.mall.api.service.UserService;
-import org.springframework.beans.factory.annotation.Autowired;
+import com.alibaba.dubbo.config.annotation.Reference;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -19,8 +19,8 @@ import java.util.List;
 @Controller
 public class UserController {
 
-    @Autowired
-    UserService userService;
+    @Reference(interfaceClass = UserService.class, check = false)
+    private UserService userService;
 
     @RequestMapping(path = "/index", method = RequestMethod.GET)
     @ResponseBody

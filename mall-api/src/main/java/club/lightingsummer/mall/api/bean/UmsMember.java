@@ -3,13 +3,14 @@ package club.lightingsummer.mall.api.bean;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import java.io.Serializable;
 import java.util.Date;
 
 /**
  * @author lightingSummer
  * @date 2019/11/12 0012
  */
-public class UmsMember {
+public class UmsMember implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

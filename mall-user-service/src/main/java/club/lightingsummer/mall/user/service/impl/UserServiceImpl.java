@@ -5,8 +5,8 @@ import club.lightingsummer.mall.api.bean.UmsMemberReceiveAddress;
 import club.lightingsummer.mall.api.service.UserService;
 import club.lightingsummer.mall.user.mapper.UmsMemberReceiveAddressMapper;
 import club.lightingsummer.mall.user.mapper.UserMapper;
+import com.alibaba.dubbo.config.annotation.Service;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
 import tk.mybatis.mapper.entity.Example;
 
 import java.util.List;
