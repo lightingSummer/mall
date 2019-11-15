@@ -1,7 +1,7 @@
 package club.lightingsummer.mall.api.service;
 
-import club.lightingsummer.mall.api.bean.UmsMember;
 import club.lightingsummer.mall.api.bean.UmsMemberReceiveAddress;
+import club.lightingsummer.mall.api.bean.UmsMember;
 
 import java.util.List;
 

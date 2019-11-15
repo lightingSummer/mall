@@ -1,17 +1,17 @@
-package club.lightingsummer.mall.user;
+package club.lightingsummer.mall.manage;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 /**
- * @author lightingSummer
- * @date 2019/11/12 0012
+ * @author light
+ * @date 2019/11/15 0015 16:36
  */
 @SpringBootApplication
-public class MallUserWebApplication {
+public class MallManageWebApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(MallUserWebApplication.class, args);
+        SpringApplication.run(MallManageWebApplication.class, args);
     }
 
 }
