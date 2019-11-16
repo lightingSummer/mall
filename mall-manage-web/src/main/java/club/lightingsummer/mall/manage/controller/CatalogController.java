@@ -21,21 +21,21 @@ public class CatalogController {
     @Reference(interfaceClass = CatalogService.class, check = false, cache = "lru")
     CatalogService catalogService;
 
-    @RequestMapping(path = "/getCatalog1", method = RequestMethod.POST)
+    @RequestMapping(path = "/getCatalog1")
     @ResponseBody
     public List<PmsBaseCatalog1> getCatalog1() {
         return catalogService.getCatalog1();
     }
 
-    @RequestMapping(path = "/getCatalog2", method = RequestMethod.POST)
+    @RequestMapping(path = "/getCatalog2")
     @ResponseBody
-    public List<PmsBaseCatalog2> getCatalog2(@RequestParam("catalog2Id") String catalog2Id) {
-        return catalogService.getCatalog2(catalog2Id);
+    public List<PmsBaseCatalog2> getCatalog2(@RequestParam("catalog1Id") String catalog1Id) {
+        return catalogService.getCatalog2(catalog1Id);
     }
 
-    @RequestMapping(path = "/getCatalog3", method = RequestMethod.POST)
+    @RequestMapping(path = "/getCatalog3")
     @ResponseBody
-    public List<PmsBaseCatalog3> getCatalog3(@RequestParam("catalog3Id") String catalog3Id) {
-        return catalogService.getCatalog3(catalog3Id);
+    public List<PmsBaseCatalog3> getCatalog3(@RequestParam("catalog2Id") String catalog2Id) {
+        return catalogService.getCatalog3(catalog2Id);
     }
 }
