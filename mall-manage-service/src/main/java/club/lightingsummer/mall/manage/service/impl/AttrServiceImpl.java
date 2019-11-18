@@ -6,6 +6,7 @@ import club.lightingsummer.mall.api.service.AttrService;
 import club.lightingsummer.mall.manage.mapper.PmsBaseAttrInfoMapper;
 import club.lightingsummer.mall.manage.mapper.PmsBaseAttrValueMapper;
 import com.alibaba.dubbo.config.annotation.Service;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import tk.mybatis.mapper.entity.Example;
 
@@ -36,5 +37,32 @@ public class AttrServiceImpl implements AttrService {
         Example example = new Example(PmsBaseAttrValue.class);
         example.createCriteria().andEqualTo("attrId", attrId);
         return pmsBaseAttrValueMapper.selectByExample(example);
+    }
+
+    @Override
+    public void saveAttrInfo(PmsBaseAttrInfo pmsBaseAttrInfo) {
+        String id = pmsBaseAttrInfo.getId();
+        // id为空，插入操作；否则，更新操作
+        if (StringUtils.isBlank(id)) {
+            pmsBaseAttrInfoMapper.insertSelective(pmsBaseAttrInfo);
+            String attrId = pmsBaseAttrInfo.getId();
+            for (PmsBaseAttrValue pmsBaseAttrValue : pmsBaseAttrInfo.getAttrValueList()) {
+                pmsBaseAttrValue.setAttrId(attrId);
+                pmsBaseAttrValueMapper.insertSelective(pmsBaseAttrValue);
+            }
+        } else {
+            // 更新PmsBaseAttrInfo数据
+            Example example = new Example(PmsBaseAttrInfo.class);
+            example.createCriteria().andEqualTo("id", id);
+            pmsBaseAttrInfoMapper.updateByExampleSelective(pmsBaseAttrInfo, example);
+            // 更新PmsBaseAttrValue数据
+            Example delExample = new Example(PmsBaseAttrValue.class);
+            delExample.createCriteria().andEqualTo("attrId", id);
+            pmsBaseAttrValueMapper.deleteByExample(example);
+            for (PmsBaseAttrValue pmsBaseAttrValue : pmsBaseAttrInfo.getAttrValueList()) {
+                pmsBaseAttrValue.setAttrId(id);
+                pmsBaseAttrValueMapper.insertSelective(pmsBaseAttrValue);
+            }
+        }
     }
 }

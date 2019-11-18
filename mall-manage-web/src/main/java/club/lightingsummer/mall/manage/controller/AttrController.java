@@ -4,11 +4,10 @@ import club.lightingsummer.mall.api.bean.PmsBaseAttrInfo;
 import club.lightingsummer.mall.api.bean.PmsBaseAttrValue;
 import club.lightingsummer.mall.api.service.AttrService;
 import com.alibaba.dubbo.config.annotation.Reference;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -19,6 +18,7 @@ import java.util.List;
 @Controller
 @CrossOrigin
 public class AttrController {
+    private static final Logger logger = LoggerFactory.getLogger(AttrController.class);
 
     @Reference(interfaceClass = AttrService.class, check = false)
     AttrService attrService;
@@ -33,5 +33,17 @@ public class AttrController {
     @ResponseBody
     public List<PmsBaseAttrValue> getAttrValueList(@RequestParam("attrId") String attrId) {
         return attrService.getAttrValueList(attrId);
+    }
+
+    @RequestMapping(path = "saveAttrInfo")
+    @ResponseBody
+    public String saveAttrInfo(@RequestBody PmsBaseAttrInfo pmsBaseAttrInfo) {
+        try {
+            attrService.saveAttrInfo(pmsBaseAttrInfo);
+            return "success";
+        } catch (Exception e) {
+            logger.error("保存数据失败" + e.getMessage());
+            return "fail";
+        }
     }
 }

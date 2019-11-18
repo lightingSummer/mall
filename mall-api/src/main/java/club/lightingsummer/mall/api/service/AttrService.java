@@ -25,4 +25,12 @@ public interface AttrService {
      * @return java.util.List<club.lightingsummer.mall.api.bean.PmsBaseAttrValue>
      */
     List<PmsBaseAttrValue> getAttrValueList(String attrId);
+
+    /**
+     * description: 添加或者修改信息
+     *
+     * @param pmsBaseAttrInfo 待修改信息
+     * @return void
+     */
+    void saveAttrInfo(PmsBaseAttrInfo pmsBaseAttrInfo);
 }
