@@ -2,9 +2,11 @@ package club.lightingsummer.mall.manage.service.impl;
 
 import club.lightingsummer.mall.api.bean.PmsBaseAttrInfo;
 import club.lightingsummer.mall.api.bean.PmsBaseAttrValue;
+import club.lightingsummer.mall.api.bean.PmsBaseSaleAttr;
 import club.lightingsummer.mall.api.service.AttrService;
 import club.lightingsummer.mall.manage.mapper.PmsBaseAttrInfoMapper;
 import club.lightingsummer.mall.manage.mapper.PmsBaseAttrValueMapper;
+import club.lightingsummer.mall.manage.mapper.PmsBaseSaleAttrMapper;
 import com.alibaba.dubbo.config.annotation.Service;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,6 +26,9 @@ public class AttrServiceImpl implements AttrService {
 
     @Autowired
     PmsBaseAttrValueMapper pmsBaseAttrValueMapper;
+
+    @Autowired
+    PmsBaseSaleAttrMapper pmsBaseSaleAttrMapper;
 
     @Override
     public List<PmsBaseAttrInfo> getAttrInfoList(String catalog3Id) {
@@ -64,5 +69,10 @@ public class AttrServiceImpl implements AttrService {
                 pmsBaseAttrValueMapper.insertSelective(pmsBaseAttrValue);
             }
         }
+    }
+
+    @Override
+    public List<PmsBaseSaleAttr> getBaseSaleAttrList() {
+        return pmsBaseSaleAttrMapper.selectAll();
     }
 }

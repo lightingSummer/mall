@@ -2,6 +2,7 @@ package club.lightingsummer.mall.api.service;
 
 import club.lightingsummer.mall.api.bean.PmsBaseAttrInfo;
 import club.lightingsummer.mall.api.bean.PmsBaseAttrValue;
+import club.lightingsummer.mall.api.bean.PmsBaseSaleAttr;
 
 import java.util.List;
 
@@ -33,4 +34,11 @@ public interface AttrService {
      * @return void
      */
     void saveAttrInfo(PmsBaseAttrInfo pmsBaseAttrInfo);
+
+    /**
+     * description: 获取所有销售属性
+     *
+     * @return java.util.List<club.lightingsummer.mall.api.bean.PmsBaseSaleAttr>
+     */
+    List<PmsBaseSaleAttr> getBaseSaleAttrList();
 }

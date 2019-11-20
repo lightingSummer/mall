@@ -2,6 +2,7 @@ package club.lightingsummer.mall.manage.controller;
 
 import club.lightingsummer.mall.api.bean.PmsBaseAttrInfo;
 import club.lightingsummer.mall.api.bean.PmsBaseAttrValue;
+import club.lightingsummer.mall.api.bean.PmsBaseSaleAttr;
 import club.lightingsummer.mall.api.service.AttrService;
 import com.alibaba.dubbo.config.annotation.Reference;
 import org.slf4j.Logger;
@@ -45,5 +46,11 @@ public class AttrController {
             logger.error("保存数据失败" + e.getMessage());
             return "fail";
         }
+    }
+
+    @RequestMapping("baseSaleAttrList")
+    @ResponseBody
+    public List<PmsBaseSaleAttr> getBaseSaleAttrList() {
+        return attrService.getBaseSaleAttrList();
     }
 }
