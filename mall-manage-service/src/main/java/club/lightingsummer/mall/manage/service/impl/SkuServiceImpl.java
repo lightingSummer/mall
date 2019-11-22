@@ -11,6 +11,7 @@ import club.lightingsummer.mall.manage.mapper.PmsSkuInfoMapper;
 import club.lightingsummer.mall.manage.mapper.PmsSkuSaleAttrValueMapper;
 import com.alibaba.dubbo.config.annotation.Service;
 import org.springframework.beans.factory.annotation.Autowired;
+import tk.mybatis.mapper.entity.Example;
 
 import java.util.List;
 
@@ -54,5 +55,19 @@ public class SkuServiceImpl implements SkuService {
             pmsSkuSaleAttrValue.setSkuId(skuId);
             pmsSkuSaleAttrValueMapper.insertSelective(pmsSkuSaleAttrValue);
         }
+    }
+
+    @Override
+    public PmsSkuInfo getSkuInfoById(String skuId) {
+        // 查询sku基本信息
+        Example infoExample = new Example(PmsSkuInfo.class);
+        infoExample.createCriteria().andEqualTo("id",skuId);
+        PmsSkuInfo pmsSkuInfo = pmsSkuInfoMapper.selectOneByExample(infoExample);
+        // 查询图片信息
+        Example imgExample = new Example(PmsSkuImage.class);
+        imgExample.createCriteria().andEqualTo("skuId",skuId);
+        List<PmsSkuImage> pmsSkuImageList = pmsSkuImageMapper.selectByExample(imgExample);
+        pmsSkuInfo.setSkuImageList(pmsSkuImageList);
+        return pmsSkuInfo;
     }
 }

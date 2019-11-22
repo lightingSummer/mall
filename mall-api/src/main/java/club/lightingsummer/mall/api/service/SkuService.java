@@ -13,4 +13,12 @@ public interface SkuService {
      * @param pmsSkuInfo sku信息
      */
     void saveSkuInfo(PmsSkuInfo pmsSkuInfo);
+
+    /**
+     * description: 根据skuId查询信息
+     *
+     * @param skuId skuId
+     * @return club.lightingsummer.mall.api.bean.PmsSkuInfo
+     */
+    PmsSkuInfo getSkuInfoById(String skuId);
 }

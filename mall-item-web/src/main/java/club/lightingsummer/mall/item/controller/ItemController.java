@@ -1,8 +1,12 @@
 package club.lightingsummer.mall.item.controller;
 
+import club.lightingsummer.mall.api.bean.PmsSkuInfo;
+import club.lightingsummer.mall.api.service.SkuService;
+import com.alibaba.dubbo.config.annotation.Reference;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.ModelMap;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
 
 /**
  * @author light
@@ -10,9 +14,13 @@ import org.springframework.web.bind.annotation.ResponseBody;
  */
 @Controller
 public class ItemController {
+    @Reference(interfaceClass = SkuService.class, check = false)
+    SkuService skuService;
 
-    @RequestMapping(path = "/index")
-    public String indexTest() {
-        return "index";
+    @RequestMapping(path = "{skuId}.html")
+    public String item(@PathVariable String skuId, ModelMap modelMap) {
+        PmsSkuInfo pmsSkuInfo = skuService.getSkuInfoById(skuId);
+        modelMap.addAttribute("skuInfo",pmsSkuInfo);
+        return "item";
     }
 }
