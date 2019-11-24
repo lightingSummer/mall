@@ -64,4 +64,9 @@ public class SpuServiceImpl implements SpuService {
         example.createCriteria().andEqualTo("productId", spuId);
         return pmsProductImageMapper.selectByExample(example);
     }
+
+    @Override
+    public List<PmsProductSaleAttr> getSpuSaleAttrListCheckBySku(String spuId, String skuId) {
+        return pmsProductSaleAttrMapper.selectSpuSaleAttrListCheckBySku(spuId,skuId);
+    }
 }

@@ -41,4 +41,13 @@ public interface SpuService {
      * @return java.util.List<club.lightingsummer.mall.api.bean.PmsProductImage>
      */
     List<PmsProductImage> spuImageList(String spuId);
+
+    /**
+     * description: 查询售卖属性
+     *
+     * @param spuId spuId
+     * @param skuId skuId
+     * @return club.lightingsummer.mall.api.bean.PmsProductSaleAttr
+     */
+    List<PmsProductSaleAttr> getSpuSaleAttrListCheckBySku(String spuId,String skuId);
 }
