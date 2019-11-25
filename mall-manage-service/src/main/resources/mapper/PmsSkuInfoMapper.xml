@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="club.lightingsummer.mall.manage.mapper.PmsSkuInfoMapper">
+
+    <select id="selectSkuAttrListBySpuId" resultMap="skuAttrListBySpuIdResult">
+        SELECT
+            pi.*,pav.*,pi.id as sa_id,pav.id as sav_id
+        FROM
+            pms_sku_info AS pi,
+            pms_sku_sale_attr_value AS pav
+        WHERE
+            pi.id = pav.sku_id
+            AND pi.product_id = #{spuId}
+    </select>
+
+    <resultMap id="skuAttrListBySpuIdResult" type="club.lightingsummer.mall.api.bean.PmsSkuInfo" autoMapping="true">
+        <result column="sa_id" property="id"></result>
+        <collection property="skuSaleAttrValueList" ofType="club.lightingsummer.mall.api.bean.PmsSkuSaleAttrValue" autoMapping="true">
+            <result column="sav_id" property="id"></result>
+        </collection>
+    </resultMap>
+</mapper>
